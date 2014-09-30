@@ -1,0 +1,1 @@
+"http://vufind.carli.illinois.edu/vf-isu/Record/AJAX?method=GetHoldings&id=isu_" . $idnum

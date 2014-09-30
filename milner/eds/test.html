@@ -1,0 +1,35 @@
+<html>
+<head>
+	<script type="text/javascript" src="./external/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="./external/test.js"></script>
+
+	<script type="text/javascript">
+	  //<![CDATA[
+
+	  $(init);
+
+	  function init(){
+	  	$.getJSON("lox.json", processResult);
+	  }//end init
+
+	  function processResult(data){
+	  	$("#output").text("");
+	  	for(Title in data){
+	  		var item = data[Title];
+	  		$("#output").append("<h2>" + Title + "</h2>");
+	  		$("#output").append("<d1>");
+	  		for (detail in item){
+	  			$("#output").append("  <dt>" + detail + "</dt>");
+	  			$("#output").append("  <dt>" + item[detail] + "</dd>");
+	  		}//end for
+	  		$("#output").append("</dl>");
+	  	}//end for
+	  }//end processResults
+	  //]]>
+	</script>
+</head>
+<body>
+
+	<div id="output">Default output</div>
+</body>
+</html>

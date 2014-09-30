@@ -1,0 +1,789 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0320)http://libanswers.com/chati.php?k=b0f8f61ded2b2ac&w=2&d=791&i=793&r=http%3A%2F%2Feds.a.ebscohost.com.libproxy.lib.ilstu.edu%2Feds%2FImportWidget%2FImportWidgetContent%3FwdgtId%3D101486%26wtrgt%3DD%26vid%3D7%26sid%3D6620fc3a-2577-45de-9630-97e7845def25%2540sessionmgr4004&t=Ask%20a%20Milner%20Librarian&sr=0&chd=%23CC0000 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Chat</title>
+		<link rel="stylesheet" type="text/css" media="screen, projection" href="chati.css">
+	<style type="text/css"></style><style>
+.sreader_hide{ position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; }
+
+.widget_base label {
+	font-size: 12px;
+}
+
+
+.lc_button {
+	background-color: #3278E0;
+	border-radius: 2px 2px 2px 2px;
+	border: 1px solid #1443AF;
+	color: white;
+	cursor: pointer;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 12px;
+	/*font-weight: bold;*/
+	padding: 3px 5px;
+	vertical-align: middle;
+	height: 28px;
+	/*width: 78px;*/
+	margin-top: 10px;
+	margin-left: 2px;
+}
+
+#lc_fu, #lc_fcan{
+	width: 70px;
+}
+.login_field label {
+	display: block;
+	padding-top: 5px;
+}
+.login_field input, .login_field textarea, #comments textarea {
+	font-size:11px;
+	width: 95%;
+	border: 1px solid #EEEEEE;
+	outline: none;
+	padding: 3px;
+	resize: none;
+	border-radius: 2px;
+	/*height:20px;*/
+}
+.lc_custom_sel {
+	width: 100%;
+	border: 1px solid #EEEEEE;
+	outline: none;
+	padding: 0px;
+	resize: none;
+	border-radius: 2px;
+}
+#lc_dept_sel, #lc_dept_sel2  {
+	width: 100%;
+	margin-bottom:0;
+	border: 1px solid #EEEEEE;
+	outline: none;
+	padding: 0px;
+	resize: none;
+	border-radius: 2px;
+}
+
+#press_enter_to_send {
+	font-size: 10px;
+}
+
+#file_intro{
+	margin-top: 10px;
+	color: #555;
+}
+#anonl {
+	display:inline-block;
+	margin-bottom: 3px;
+	font-size: 11px;
+	color: #555;
+	padding-top: 0px;
+}
+#anonl  input{
+	width: 20px;
+}
+#comments{
+	margin-top: 15px;
+	font-size:12px;
+}
+#comments #comment {
+	margin-bottom:0;
+}
+.load_gif {
+	 background: url("//libchat.s3.amazonaws.com/chat_loading.gif") no-repeat scroll 0% 0% transparent;
+	 display: none;
+	 font-size: 16px;
+	 height: 16px;
+	 margin: 0px;
+	 width: 16px;
+}
+.load_gifc {
+	float: right;
+	margin-top: 2px;
+}
+.load_gifl {
+	 float: left;
+	 margin: 4px;
+}
+#sound {
+	width:1px;
+	height:1px;
+}
+#msg_con, #txt, #icons {
+	/*position:absolute;
+	left: 10px;
+	right: 10px;
+	*/
+}
+#msg_con, #chat_txt {
+	border: 1px solid #ccc;
+	outline: none;
+}
+#msg_con {
+	/*
+	top: 35px;
+	bottom: 8em;
+	height:expression( document.documentElement.clientHeight - 10 * 12 +'px' )
+	*/
+	height:160px;
+	display:block;
+	overflow-y:auto;
+	background-color: #fff;
+	border-radius: 2px;
+}
+#msg_con #msgs{
+	/*overflow:auto;*/
+	height:100%;
+}
+#icons {
+	bottom: 7em;
+	height: 1em;
+}
+#txt{
+	bottom:3em;
+	/* height:40px; */
+}
+#txt *{
+	width:100%;
+	height:100%;
+	margin:0;
+}
+#chat {
+	padding:5px;
+}
+#chat_txt {
+	height: 72px;
+	width: 100%;
+	resize: none;
+	padding: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font: 12px/1.5em Arial, Helvetica, sans-serif;
+	border-radius: 2px;
+}
+#istyping {
+	 color: #999;
+	 float: left;
+	 font-size: 8px;
+	 font-style: italic;
+	 height: 14px;
+	 margin: 2px 0px 3px 0px;
+	 padding: 1px;
+	 width: 92px;
+	 overflow: hidden;
+}
+a.s_icon, a.t_icon, a.e_icon, a.c_icon, a.f_icon {
+	text-decoration:none;
+	cursor: pointer;
+}
+.sprite {
+	/*background: url("//libchat.s3.amazonaws.com/chat_client_sprite.png") no-repeat;*/
+	background: url("libchat_s3/chat_client_sprite3.png") no-repeat;
+	text-decoration:none;
+	float:right;
+	margin-right: 8px;
+}
+.soff{
+	background-position: 0 -66px;
+	width: 16px;
+	height: 16px;
+}
+.son{
+	background-position: 0 -132px;
+	width: 16px;
+	height: 16px;
+}
+.t_icon {
+	background-position: 0 0px;
+	width: 16px;
+	height: 16px;
+	margin-top:0px;
+}
+.f_icon {
+	background-position: 0 -413px;
+	width: 16px;
+	height: 16px;
+}
+
+.peel_out_icon {
+	background-position: 0 -460px;
+	width: 16px;
+	height: 16px;
+	margin-top:-1px;
+}
+.co_browse_icon {
+	background-position: 0 -513px;
+	width: 16px;
+	height: 16px;
+}
+
+.e_icon, .c_icon {
+	background-position: 0 -258px;
+}
+.t_closed {
+	float: left!important;
+	margin-top: 25px;
+}
+#msgs div {
+	line-height: 1.0em;
+	padding: 5px 3px;
+	font-size:12px;
+}
+.lci_sys {
+	margin: 10px 3px;
+	border: 1px dotted #ccc;
+	color: #555;
+}
+.lci_msg{
+	margin: 2px;
+}
+.ci{
+	background-color: #f9f9f9;
+}
+.lci_un {
+	font-weight: bold;
+}
+.lci_me {
+	color: #3278E0;
+}
+.lci_published {
+	color: #ccc;
+	font-size: 10px;
+	font-style: italic;
+	line-height: 1.1em;
+}
+
+.lci_h3, .lci_head_un, #la_widget  .lci_h3{
+	 color: #3278E0;
+	 font-family: Arial,Helvetica,sans-serif;
+	 font-size: 12px;
+	 font-weight: bold;
+}
+
+.lci_off_cont{
+	padding: 10px;
+}
+.lci_offlinemsg {
+	padding-top: 50px;
+}
+
+
+#star_text, #end_text {
+	margin-top: 20px;
+	font-size:12px;
+}
+
+
+#star_end {
+	font-size: 12px;
+}
+
+#star_rating {
+	margin-top:4px;
+}
+
+#star_rating input[type="radio"], input[type="checkbox"] {
+	margin:0px;
+}
+
+#email_transcript {
+	font-size:12px;
+	white-space:nowrap;		
+	padding-left:22px;
+}
+
+#la_hide_msg {
+	font-size:14px;
+}
+
+#slidebutton_position_selector {
+	margin:0;
+	margin-left:-4px;
+	padding:0;		
+}
+
+#msgs_status {
+	line-height: 1.0em;
+	padding: 5px 3px;
+	font-size:12px;
+	background: #F9F9F9;
+	border-top:1px solid lightgrey;
+	border-left:1px solid lightgrey;
+	border-right:1px solid lightgrey;
+}
+
+</style>
+
+<!-- 
+ 	widget templates
+ -->
+<script type="text/template" id="template-login-panel">
+	<h2 id="chat_title" style="color:{{ color_head }}">{{ chat_title }}</h2>
+	<div class="login_field" style="margin-top:5px;">
+		<label id="name_label" for="name" class="sreader_hide">{{ name_label }}</label>
+		<input type="text" class="login_name glowing-border" style="border-color:{{ color_border }}" placeholder="{{ name_label }}" id="name" />
+	</div>
+
+	{{# if (user1!=null && user1.get('show')==1) {  }}
+	<div class="login_field" style="margin-top:2px;">
+		<label id="user1_label" for="user1" class="sreader_hide">{{ user1.get('name') }}</label>
+		{{# if (user1.get('type')=='t') {  }}
+			<input type="text" class="glowing-border" style="border-color:{{ color_border }}" placeholder="{{ user1.get('name') }}" id="user1" />
+		{{# } else { 
+				print("<SELECT class='lc_custom_sel' id='user1'><OPTION value='0'>"+ user1.get('name') + "</OPTION>");
+
+				var items = user1.get('val').split(",");				
+				_.each(items, function(item) {
+					print("<OPTION value='"+item+"'>"+item+"</OPTION>");
+				});
+				print("</SELECT>");				
+		} }}
+	</div>
+	{{# } }}
+
+	{{# if (user2!=null && user2.get('show')==1) {  }}
+	<div class="login_field" style="margin-top:2px;">
+		<label id="user2_label" for="user2" class="sreader_hide">{{ user2.get('name') }}</label>
+		{{# if (user2.get('type')=='t') {  }}
+			<input type="text" class="glowing-border" style="border-color:{{ color_border }}" placeholder="{{ user2.get('name') }}" id="user2" />
+		{{# } else { 
+				print("<SELECT class='lc_custom_sel' id='user2'><OPTION value='0'>"+ user2.get('name') + "</OPTION>");
+				var items = user2.get('val').split(",");
+				_.each(items, function(item) {
+					print("<OPTION value='"+item+"'>"+item+"</OPTION>");
+				});
+				print("</SELECT>");				
+		} }}
+	</div>
+	{{# } }}
+
+	{{# if (user3!=null && user3.get('show')==1) {  }}
+	<div class="login_field" style="margin-top:2px;">
+		<label id="user3_label" for="user3" class="sreader_hide">{{ user3.get('name') }}</label>
+		{{# if (user3.get('type')=='t') {  }}
+			<input type="text" class="glowing-border" style="border-color:{{ color_border }}" placeholder="{{ user3.get('name') }}" id="user3" />
+		{{# } else { 
+				print("<SELECT class='lc_custom_sel' id='user3'><OPTION value='0'>"+ user3.get('name') + "</OPTION>");
+				var items = user3.get('val').split(",");
+				_.each(items, function(item) {
+					print("<OPTION value='"+item+"'>"+item+"</OPTION>");
+				});
+				print("</SELECT>");				
+		} }}
+	</div>
+	{{# } }}
+
+	{{# if (user4!=null && user4.get('show')==1) {  }}
+	<div class="login_field" style="margin-top:2px;">
+		<label id="user4_label" for="user4" class="sreader_hide">{{ user4.get('name') }}</label>
+		{{# if (user4.get('type')=='t') {  }}
+			<input type="text" class="glowing-border" style="border-color:{{ color_border }}" placeholder="{{ user4.get('name') }}" id="user4" />
+		{{# } else { 
+				print("<SELECT class='lc_custom_sel' id='user4'><OPTION value='0'>"+ user4.get('name') + "</OPTION>");
+				var items = user4.get('val').split(",");
+				_.each(items, function(item) {
+					print("<OPTION value='"+item+"'>"+item+"</OPTION>");
+				});
+				print("</SELECT>");				
+		} }}
+	</div>
+	{{# } }}
+
+	{{# if (!is_personal && (parseInt(depart_id)==0)) {  }}
+	<div style="margin-top:20px;">
+	<label id="dept_label" for="dept">{{ dept_label }}</label>
+	{{ department_selector }}
+	</div>
+	{{# } }}
+
+	{{# if (initial_question) {  }}
+	<div id="initial_question_div" class="login_field">
+		<label id="initial_question_label" for="ques">{{ initial_question_label }}</label>
+		<textarea id="ques" style="border-color:{{ color_border }}" name="ques"></textarea>
+	</div>
+	{{# } }}
+
+	<input type="button" value="{{ chat_button }}" class="lc_button" style="margin-bottom:10px; color:{{ color_btn }}; background-color:{{ color_head }}; border-color:{{ color_head }};" id="lc_cb" />
+	<div class="load_gif load_gifl"></div>
+</script>
+
+
+<script type="text/template" id="template-chat-panel">
+	<!-- remove user name display
+	<div style="float:left;"> 
+		<h2 id="title" class="color_head" style="color:{{ color_head }}">&nbsp;</h2>
+	</div> 
+	-->
+
+	<div style="float:right; width:110px;"> 
+		<span id='connect_state'></span>
+		<a href="#" class="sprite e_icon" style="margin-right:0px;" title="End Chat">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	</div> 
+
+	<div style="clear:both" id="msgs_status" role="status" aria-live="polite">status</div> 
+	<div style="clear:both" id="msg_con" role="log" aria-live="polite"> 
+		<div id="msgs"></div> 
+	</div> 
+
+	<div id="icons" style="margin-top:2px;"> 
+		<div id="istyping"></div> 
+		<a id="peel_out" class="sprite peel_out_icon" style="margin-right:2px;" title="Pop out"></a>
+		<!--
+		<a id ="co_browse" class="sprite co_browse_icon" style="margin-right:2px;" title="Co browse with librarian"></a>
+		<a id="peel_out" href="#" style="display:none; margin-left:2px; margin-right:2px; float:right;" class="ui-icon-eject" title="Pop out"><img border=0 src="images/popout_16.png" width="16" height="16"></a>
+		-->
+		<a class="sprite t_icon" style="margin-right:6px;" title="Email chat transcript"></a>
+		{{#  if (file_uploads) { }}
+		<a class="sprite f_icon" style="margin-right:6px;" title="Send file to Operator" id="file_upload_icon" >&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		{{# } }}
+		<a class="sprite s_icon" style="margin-right:6px;" title="{{ sound_off }}"></a>
+		<div class="load_gif load_gifc"></div> 
+	</div>
+	<div id="txt" role="presentation"> 
+		<form method="post"> 
+			<textarea role="textbox" aria-multiline="true" style="border-color:{{ color_border }}" id="chat_txt"></textarea> 
+		</form> 
+	<div id="press_enter_to_send" style="text-align:right; color:grey; ">{{ press_enter }}</div>
+	</div>
+</script>
+
+
+<script type="text/template" id="template-star-panel">
+	<h2 id="byeMsg" class="color_head" style="color:{{ color_head }}">{{ byeMsg }}</h2>
+
+	{{# if (star_ratings) { }}
+	<div id="star_text">{{ star_text }}</div>
+	<div id="star_rating">
+		<table width=100%><tr>
+		<td align=center width=25%>
+			<img src='images/rating-great.png'><br>
+			Great<br>
+			<input type="radio" class="radio" value="4" id="rating_great" name="chat_rating">
+		</td>
+		<td align=center width=25%>
+			<img src='images/rating-good.png'><br>
+			Good<br>
+			<input type="radio" class="radio" value="3" id="rating_good" name="chat_rating">
+		</td>
+		
+		<td align=center width=25%>	
+			<img src='images/rating-soso.png'><br>
+			So-so<br>
+			<input type="radio" class="radio" value="2" id="rating_soso" name="chat_rating">
+		</td>
+
+		<td align=center width=25%>
+			<img src='images/rating-bad.png'><br>
+			Bad<br>
+			<input type="radio" class="radio" value="1" id="rating_bad" name="chat_rating">
+		</td>
+
+		</tr></table>
+	</div>
+
+	<div id="comments">
+		<form action="#">
+			<div id="comments_label">
+				{{ comments_label }}
+			</div>
+			<textarea id="comment" style="border-color:{{ color_border }}" name="comment"></textarea>
+			<input type="button" value=" {{ comments_button_text }} " class="lc_button" style="color:{{ color_btn }}; background-color:{{ color_head }}; border-color:{{ color_head }};" id="com_b" />
+
+			{{# if (widget_type=='2' || widget_type=='3' || widget_type=='4') { }} 
+			<input type="button" value=" {{ done_button }} " class="lc_button" style="color:{{ color_btn }}; background-color:{{ color_head }}; border-color:{{ color_head }};" id="cls" />
+			{{# } }}
+
+		</form>
+	</div>
+	{{# } }}
+
+	{{# if (!star_ratings) { }}
+		{{# if (widget_type=='2' || widget_type=='3' || widget_type=='4') { }} 
+		<div style="clear:both;">
+			<input id="cls" type="button" value="{{ done_button }}" class="lc_button" style="margin-top:20px; margin-left:0px;"/>
+		</div>
+		{{# } }}
+	{{# } }}
+
+	<div style="clear:both;">
+		<a id="email_transcript" class="sprite t_icon t_closed" title="Email chat transcript">Email chat transcript</a>
+	</div>
+
+</script>
+
+
+<script type="text/template" id="template-end-panel">
+	<h2 id="byeMsg" class="color_head" style="color:{{ color_head }}">{{ byeMsg }}</h2>
+	<!--
+	<div id="comments">
+		<form action="#">
+			<div id="comments_label">
+				{{ comments_label }}
+			</div>
+			<textarea id="comment" style="border-color:{{ color_border }}" name="comment"></textarea>
+			<input type="button" value=" {{ comments_button_text }} " class="lc_button" id="com_b" />
+		</form>
+	</div>
+	-->
+
+	<div style="clear:both; margin-top:10px">
+		<a class="sprite t_icon t_closed" style="white-space:nowrap;" title="Email chat transcript">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email chat transcript</a>
+	</div>
+
+	{{# if (widget_type=='2' || widget_type=='3' || widget_type=='4') { }} 
+	<div style="clear:both;">
+		<input id="cl" type="button" value="{{ done_button }}" class="lc_button" style="margin-top:20px; margin-left:0px;"/>
+	</div>
+	{{# } }}
+
+</script>
+
+
+<script type="text/template" id="template-file-upload-panel">
+	<h2 style="color:{{ color_head }}">Upload File</h2>
+	<form id="fileup" name="fileup" method="POST" enctype="multipart/form-data">
+		<div id="file_intro">Note: Maximum file size is 5MB. File is removed after one month, it is not kept permanently.</div>
+		<div class="login_field">
+			<label for="name">Attach a file:</label>
+			<input style="font-size:12px;" type="file" name="ufile" id="ufile" size="10" />
+		</div>
+		<input type="button" value="Upload!" class="lc_button" id="lc_fu" />&nbsp;&nbsp;&nbsp;<input type="button" value="Cancel" class="lc_button" id="lc_fcan" />
+	</form>
+</script>
+
+
+<script type="text/template" id="template-chat-offline">
+
+	{{# if (widget_type=='2' || widget_type=='3' || widget_type=='4' || widget_type=='5') { }} 
+
+	<div class="lci_off_cont">
+		<h2 id="offline_text" class="lci_h3 color_head" style="color:{{ color_head }}"> {{ offline_text }} </h2>
+		<div id="la_hide_msg" class="lci_offlinemsg"> {{ la_hide_msg }} </div>
+		<div id="la_hide_msg2" class="lci_offlinemsg"> {{ la_hide_msg2 }} </div>
+	</div>
+
+	{{# } }}
+
+
+
+</script>
+</head>
+
+	<body style="background-color: rgb(249, 249, 249);">
+	<div class="widget_base">
+	<div id="login">
+	<h2 id="chat_title" style="color:#CC0000">Ask a Milner Librarian</h2>
+	<div class="login_field" style="margin-top:5px;">
+		<label id="name_label" for="name" class="sreader_hide">Name:</label>
+		<input type="text" class="login_name glowing-border" style="border-color:#eeeeee" placeholder="Name:" id="name">
+	</div>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	<input type="button" value="Chat!" class="lc_button" style="margin-bottom:10px; color:#FFFFFF; background-color:#CC0000; border-color:#CC0000;" id="lc_cb">
+	<div class="load_gif load_gifl"></div>
+</div>
+	<div id="chat" style="display: none;">
+	<!-- remove user name display
+	<div style="float:left;"> 
+		<h2 id="title" class="color_head" style="color:#CC0000">&nbsp;</h2>
+	</div> 
+	-->
+
+	<div style="float:right; width:110px;"> 
+		<span id="connect_state"></span>
+		<a href="http://libanswers.com/chati.php?k=b0f8f61ded2b2ac&w=2&d=791&i=793&r=http%3A%2F%2Feds.a.ebscohost.com.libproxy.lib.ilstu.edu%2Feds%2FImportWidget%2FImportWidgetContent%3FwdgtId%3D101486%26wtrgt%3DD%26vid%3D7%26sid%3D6620fc3a-2577-45de-9630-97e7845def25%2540sessionmgr4004&t=Ask%20a%20Milner%20Librarian&sr=0&chd=%23CC0000#" class="sprite e_icon" style="margin-right:0px;" title="End Chat">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	</div> 
+
+	<div style="clear:both" id="msgs_status" role="status" aria-live="polite">status</div> 
+	<div style="clear:both" id="msg_con" role="log" aria-live="polite"> 
+		<div id="msgs"></div> 
+	</div> 
+
+	<div id="icons" style="margin-top:2px;"> 
+		<div id="istyping"></div> 
+		<a id="peel_out" class="sprite peel_out_icon" style="margin-right: 2px; display: none;" title="Pop out"></a>
+		<!--
+		<a id ="co_browse" class="sprite co_browse_icon" style="margin-right:2px;" title="Co browse with librarian"></a>
+		<a id="peel_out" href="#" style="display:none; margin-left:2px; margin-right:2px; float:right;" class="ui-icon-eject" title="Pop out"><img border=0 src="images/popout_16.png" width="16" height="16"></a>
+		-->
+		<a class="sprite t_icon" style="margin-right: 6px; display: none;" title="Email chat transcript"></a>
+		
+		<a class="sprite f_icon" style="margin-right: 6px; display: none;" title="Send file to Operator" id="file_upload_icon">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		
+		<a class="sprite s_icon soff" style="margin-right:6px;" title="Sound is Off"></a>
+		<div class="load_gif load_gifc"></div> 
+	</div>
+	<div id="txt" role="presentation"> 
+		<form method="post"> 
+			<textarea role="textbox" aria-multiline="true" style="border-color:#eeeeee" id="chat_txt"></textarea> 
+		</form> 
+	<div id="press_enter_to_send" style="text-align:right; color:grey; ">Press ENTER to send</div>
+	</div>
+</div>
+	<div id="star" style="display: none;">
+	<h2 id="byeMsg" class="color_head" style="color:#CC0000">Thanks for chatting!</h2>
+
+	
+
+	
+		 
+		<div style="clear:both;">
+			<input id="cls" type="button" value="Continue" class="lc_button" style="margin-top:20px; margin-left:0px;">
+		</div>
+		
+	
+
+	<div style="clear:both;">
+		<a id="email_transcript" class="sprite t_icon t_closed" title="Email chat transcript" style="display: none;">Email chat transcript</a>
+	</div>
+
+</div>
+	<div id="end" style="display: none;">
+	<h2 id="byeMsg" class="color_head" style="color:#CC0000">Thanks for chatting!</h2>
+	<!--
+	<div id="comments">
+		<form action="#">
+			<div id="comments_label">
+				
+			</div>
+			<textarea id="comment" style="border-color:#eeeeee" name="comment"></textarea>
+			<input type="button" value=" Submit " class="lc_button" id="com_b" />
+		</form>
+	</div>
+	-->
+
+	<div style="clear:both; margin-top:10px">
+		<a class="sprite t_icon t_closed" style="white-space: nowrap; display: none;" title="Email chat transcript">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email chat transcript</a>
+	</div>
+
+	 
+	<div style="clear:both;">
+		<input id="cl" type="button" value="Continue" class="lc_button" style="margin-top:20px; margin-left:0px;">
+	</div>
+	
+
+</div>
+	<div id="file" style="display: none;">
+	<h2 style="color:#CC0000">Upload File</h2>
+	<form id="fileup" name="fileup" method="POST" enctype="multipart/form-data">
+		<div id="file_intro">Note: Maximum file size is 5MB. File is removed after one month, it is not kept permanently.</div>
+		<div class="login_field">
+			<label for="name">Attach a file:</label>
+			<input style="font-size:12px;" type="file" name="ufile" id="ufile" size="10">
+		</div>
+		<input type="button" value="Upload!" class="lc_button" id="lc_fu">&nbsp;&nbsp;&nbsp;<input type="button" value="Cancel" class="lc_button" id="lc_fcan">
+	</form>
+</div>
+	<div id="sound" style="width: 0px; height: 0px;"><img id="jp_poster_0" style="width: 0px; height: 0px; display: none;"><audio id="jp_audio_0" preload="metadata" src="//libchat.s3.amazonaws.com/chat_beep.mp3"></audio></div>
+	</div>
+	
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="chat_addons.js"></script>
+
+
+		<script type="text/javascript" src="socket.io.js"></script>
+
+			<script type="text/javascript" src="underscore-min.js"></script>
+		<script type="text/javascript" src="backbone-min.js"></script>
+	
+
+
+
+
+	<script>
+	var global = global || {};
+
+	global.isHash = false;
+	global.widgetInfo = null;
+	
+	global.username = '';
+	//global.user_id = 0;
+	global.q_channel = '';
+	global.c_channel = '';
+
+	global.typing_end_timeout;
+
+	global.is_typing_currently = false;
+	global.lc_op = 0;
+	//global.lc_opl = 0;
+	global.role = 'user';
+
+	global.sys_env = 'prod';
+
+	global.iid = 793;
+	global.wtype = 2;
+	global.key = "b0f8f61ded2b2ac";
+	global.ref = "http://eds.a.ebscohost.com.libproxy.lib.ilstu.edu/eds/ImportWidget/ImportWidgetContent?wdgtId=101486&wtrgt=D&vid=7&sid=6620fc3a-2577-45de-9630-97e7845def25%40sessionmgr4004";
+	global.uid = -1;
+	global.operator = "";
+	global.chat_title = "Ask a Milner Librarian";
+	global.byeMsg = "Thanks for chatting!";
+	global.depart_id = 791;
+	global.depart_html = "";
+	global.depart_label = "Select Department:";
+	global.name_label = "Name:";
+	global.name_default = "";
+	global.guest_input = "Guest";
+	global.chat_button = "Chat!";
+	global.done_button = "Continue";
+	global.sound_off = "Sound is Off";
+	global.sound_on = "Sound is On";
+	global.enable_sound = false;
+	global.ops_left = "Thanks for chatting with us!";
+	global.star_ratings = false;
+	global.star_text = "Please rate this chat:";
+	global.file_uploads = true;
+	global.trans_prompt = "Enter an email address to send this chat transcript to:";
+	global.error_offline = "Sorry it doesn't appear any librarians are online... Please try again later.";
+	global.error_sess = "Error starting session.";
+	//global.error_send = "Error sending this message.";
+	global.error_tran = "Error sending transcript.";
+	global.left = " has left the chat";
+	global.typing = " is typing...";
+	global.joined = " has joined the chat";
+	global.wait = "Please wait... A librarian will connect shortly!";
+	global.saf = 0;
+	global.initialq = "";
+	global.comments = "";
+	global.comments_button_text = "Submit";
+	global.color_back = "#f9f9f9";
+	global.color_bord = "#eeeeee";
+	global.color_head = "#CC0000";
+	global.color_btn = "#FFFFFF";
+	global.ladom = "libanswers.com";
+	global.query_string = "k=b0f8f61ded2b2ac&w=2&d=791&i=793&r=http%3A%2F%2Feds.a.ebscohost.com.libproxy.lib.ilstu.edu%2Feds%2FImportWidget%2FImportWidgetContent%3FwdgtId%3D101486%26wtrgt%3DD%26vid%3D7%26sid%3D6620fc3a-2577-45de-9630-97e7845def25%2540sessionmgr4004&t=Ask%20a%20Milner%20Librarian&sr=0&chd=%23CC0000";
+	global.cascade = null;
+	global.peel = "";
+	
+	if (typeof global.widgetInfo !== 'undefined' && global.widgetInfo !== null)
+		if (typeof global.widgetInfo.wait !== 'undefined')
+			global.wait = global.widgetInfo.wait;
+
+
+	if (typeof global.widgetInfo !== 'undefined' && global.widgetInfo !== null)
+		if (typeof global.widgetInfo.wait !== 'undefined')
+			global.wait = global.widgetInfo.wait;
+
+	global.custom = {};
+	global.custom.template = null;
+	global.custom.template_css = null;
+
+	var cascadeServer = "https:\/\/cascade.libchat.com:443";
+	</script>
+	
+
+<script type="text/javascript" src="chat_client_la_iframe_min.js"></script>
+
+</body></html>

@@ -44,7 +44,6 @@ function getBooks($td_array) {
   $copynum = $td_array[2];
   $itemavail = $td_array[3];
 
-  echo json_encode($td_array);
 }
 
 ?>

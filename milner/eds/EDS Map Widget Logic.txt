@@ -1,0 +1,28 @@
+EDS Map Widget Logic
+
+1. On page load, get the accession number from <section class="record-has-rtac"><div class="rtac toggle-container tog-style4" data-auto="circulation_detail" id="rtac_milner_1672714" data-rtac="{&quot;RecordAN&quot;:&quot;milner_1672714&quot;,&quot;
+	-select id where text = "rtac_milner_" and 
+	-use regex to isolate id number
+
+
+2. Call PHP with id number
+	PHP sends request and gets AJAX response
+	puts AJAX elements into array
+	convert to JSON
+3. Get JSON as response
+
+4. For each item in JSON response, display holdings info with link to find on a map
+5. On click of button, submit location and call number to php maps script
+6. Display map and holdings info
+
+
+
+Alternative 1:
+
+1. On page load, get the accession number from <section class="record-has-rtac"><div class="rtac toggle-container tog-style4" data-auto="circulation_detail" id="rtac_milner_1672714" data-rtac="{&quot;RecordAN&quot;:&quot;milner_1672714&quot;,&quot;
+	-select id where text = "rtac_milner_" and 
+	-use regex to isolate id number
+2. Display button for find on a map. If selected, send id number to php page
+
+Alternative 2:
+static html that uses the url to get the id num and create the url for the call in php

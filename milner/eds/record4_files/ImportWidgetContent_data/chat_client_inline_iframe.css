@@ -1,0 +1,16 @@
+.lci_chat_load{
+	border: 1px solid #ccc;
+	background-color: #F9F9F9;
+}
+.lci_off_cont{
+	padding: 10px;
+}
+.lci_h3, #la_widget  .lci_h3{
+     color: #3278E0;
+     font-family: Arial,Helvetica,sans-serif;
+     font-size: 14px;
+     font-weight: bold;
+}
+.lci_offlinemsg{
+	padding-top: 50px;
+}

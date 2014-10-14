@@ -11,38 +11,76 @@
     	
         getPage($url);
 
-        //echo json_encode($td_array);
     endif;  
 
 function getPage($url){
-
+	//get the html
   $web_page = http_get($url, "");
+  //make each tr element an element in an array
+  $page_array = parse_array($web_page['FILE'], "<tr", "</tr");
+  
+  //set counter for valid line in html
+  $validLine = 0;
 
-
-  $td_array = parse_array($web_page['FILE'], "<td class=\"col2", "<");
-
-
-for($xx=0; $xx<count($td_array); $xx++)
+  for($x=0; $x<count($page_array); $x++)
   {
-  $td_array[$xx] = preg_replace("/<td class=\"col2\">/", "", $td_array[$xx]);
-  $td_array[$xx] = preg_replace("/</", "", $td_array[$xx]);
+  	//if the item is a location, pull out the data
+  	if(strpos($page_array[$x], 'col1">Location:') !== false)
+  	{
+  		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
+  		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
+  		  $td_array[$validLine] = $page_array[$x];
+  	  	//echo $td_array[$validLine].$validLine . "\n";
+   		  $validLine++;
+  	}
+  	//if the item is a call number, pull out the data 	
+  		if(strpos($page_array[$x], 'col1">Call Number') !== false)
+  	{
+  		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
+  		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
+  		  $td_array[$validLine] = $page_array[$x];
+  	  	//echo $td_array[$validLine].$validLine . "\n";
+  		  $validLine++;
+  	}
+  	//if the item is a copy number pull number. Be careful to include all this so as not to include any notes that contain word copy.
+  	
+  		if(strpos($page_array[$x], 'col1">Copy:&nbsp; </td>') !== false)
+  	{
+  		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
+  		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
+  		  $td_array[$validLine] = $page_array[$x];
+  	  	//echo $td_array[$validLine].$validLine . "\n";
+  		  $validLine++;
+  	}
+  	
+  	  	//if the item is a status, pull out the data 	
 
-  //echo $td_array[$xx]."\n";
-}
+  		if(strpos($page_array[$x], 'col1">Status:') !== false)
+  	{
+  		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
+  		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
+  		  $td_array[$validLine] = $page_array[$x];
+  	  //	echo $td_array[$validLine].$validLine . "\n";
+  	    $validLine++;
 
+  	}
+  }
+  	//send to the function that transforms lines into json
     getBooks($td_array);
 }
 
+//transforms data into json
 function getBooks($td_array) {
         
     for($xx=0, $currentItem = 0; $xx<count($td_array); $xx += 4, $currentItem++)
   {
+  $totalLines = count($td_array);
 
   $loc = $td_array[($xx + 0)];
   $callnum = $td_array[($xx + 1)];
   //$copynum = $td_array[($xx + 2)];
   $itemavail = $td_array[($xx + 3)];
-  $numItems = (count($td_array)/4);
+  $numItems = ($totalLines /4);
   $totalItems = array();
   $itemArray = array();
 
@@ -58,54 +96,13 @@ function getBooks($td_array) {
 
        
 	  	  }
+	  	  //get the values of the array to prepare to pass
         $json[] = array_values($totalItems);
-
-
-        //encode area 1
-      //echo json_encode($totalItems[$currentItem], JSON_FORCE_OBJECT);
-      /*with the above line the data returns the correct data as an error in the console
-      (with or without the JSON_FORCE_OBJECT) and nothing is displayed in the html:
-      "{"itemnum":1,"loc":"Floor 4 Shelves","callnumber":"GV1803 .B78 2013",
-      "itemavailable":"c.1 - Checked out (Due: January 15, 2015)"}{"itemnum":2,
-      "loc":"Floor 4 Shelves","callnumber":"GV1803 .B78 2013","itemavailable":
-      "c.2 - Checked out (Due: January 27, 2015)"}{"itemnum":3,"loc":"Floor 6 
-      Special Collections: Building Use Only","callnumber":"GV1803 .B78 2013",
-      "itemavailable":"Available"}{"itemnum":4,"loc":"Floor 6 Special Collections: 
-      Building Use Only","callnumber":"GV1803 .B78 2013","itemavailable":"Available"}"
-      */
-
-      /*
-      echo json_encode($totalItems);
-      This outputs the correct data as above as an error 4 times
-      */
+   
 }
+				//pass json objects to js
         echo json_encode($json);
 
-   // echo json_encode($totalItems);
-     
-    //encode area 2
-      //echo json_encode($totalItems);
-      /*with the above  line uncommented the data returns as an array of objects and displays
-      the objects in html
-      with each object as
-      callnumber: "GV1803.B78 2013"
-      itemavailable: "Available"
-      itemnum: 2 
-      loc: "Floor 6 ..."
-      __proto__:Object
-
-      itemnum is correct (and the only non-string value) but the rest of the
-      values are the same for each object and are from the last iteration of 
-      the loop
-    */
-
-/*
-          for($i=0; $i<4; $i++){
-        echo json_encode($totalItems[$i]);
-      }
-      with the above enabled, I get the same data as in the objects above as an error in the console
-      */
 }
-
 
 ?>

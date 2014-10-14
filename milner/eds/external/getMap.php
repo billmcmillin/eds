@@ -26,21 +26,32 @@ $loc = htmlspecialchars($_GET["loc"]);
 	print "<body>";
 	print '<div class="main">';
 
-if(strpos($loc,'Floor 2') == true)
+if(strpos($loc,'Floor 2 Shelves') !== false)
 {
 	echo 'on floor 2!';
 }
-elseif(strpos($loc,'Floor 3') == true){
-	echo 'on floor 3!';
+elseif(strpos($loc,'Reference') !== false){
+	  echo 'on Floor 2 Reference. Ask at the desk.';
+		print "<img src='../img/FL2ref.gif' />";
 }
-elseif(strpos($loc,'Floor 4') == true){
-	echo 'on floor 4!';
+elseif(strpos($loc,'Floor 3') !== false){
+		print "<img src='../img/FL3-2012-AE.gif' />";
+
 }
-elseif(strpos($loc,'Floor 5') == true){
+elseif(strpos($loc,'Floor 4') !== false){
+	    fl4StacksMap($callNum);
+}
+elseif(strpos($loc,'Floor 5') !== false){
 	echo 'on floor 5!';
 }
-elseif(strpos($loc,'Floor 6') == true){
-	echo 'on floor 6!';
+elseif(strpos($loc,'Floor 6 Shelves') !== false){
+	fl6StacksMap($callNum);
+}
+elseif(strpos($loc,'Floor 6 Special Collections') !== false){
+	//echo 'special!';
+	
+	fl6Spc($callNum);
+	
 }
 else{
 	echo 'not sure where it is!';
@@ -48,16 +59,79 @@ else{
 
 
 
-if($loc=='Floor 5 Shelves')
-{
-	echo 'on floor 5!';
-}	
-fl6StacksMap($callNum);
+function fl4StacksMap($callNum){
+		
 
+		//	if ($location == 'BK') {
+					//if valid, cut to the first 6 chars and test
+					$location = "Floor 4";
+					//strip the tags to prevent executable code from being passed in
+					$callNum = strip_tags($callNum);
+					//strip the first 19 chars off the call number
+					//$callNum = substr_replace($callNum, '', 0, 19);
+					
+					//the way our catalog passes in call numbers leaves extra space characters
+					//before the call number begins. This gets rid of them. Each catalog may
+					//append different amounts of space to the numbers
+					$subCall = substr($callNum, 0, 20);	
+					print "<p>You searched for $callNum</p>";
+					//remove all whitespace from string - necessary for comparisons
+					//$subCall = preg_replace('/\s+/', '', $subCall);
+					
+					
+					//print "<p>Subcall is: $subCall </p>";
+				
+					
+		
+		// 0.001 - 006.5A - Shelf 1
+			 if ($subCall >= 'A' && $subCall < 'PQ'){
+						print "<img src='../img/FL4GHB.gif' />";
+						print "<p> $callNum is on floor 4.</p>";
+		}
 
+			
+		// PQ PR
+			 elseif ($subCall >= 'PQ' && $subCall < 'PR'){
+						print "<img src='img/FL6-2012-PQPR.gif' />";
+						print "<p> $callNum is on floor 6</p>";
+		}
+		
+		// PR PS
+			 elseif ($subCall >= 'PR' && $subCall < 'PS'){
+						print "<img src='img/FL6-2012-PRPS.gif' />";
+						print "<p> $callNum is on floor 6</p>";
+		}
 
+		// PS PZ
+			 elseif ($subCall >= 'PS0001' && $subCall < 'PZ9999'){
+						print "<img src='img/FL6-2012-PSPZ.gif' />";
+						print "<p> $callNum is on floor 6</p>";
+		}
+		 elseif ($subCall > 'PZ9999'){
+						print "<img src='../img/FL2ref.gif' />";
+						print "<p> $callNum has moved. Please ask at the reference desk.</p>";
+		}
+	
 
-//////////////////BRK stacks		
+			elseif($subCall > 999.999) {
+						print "<p>Error in call number</p>";
+					//	print "<p>subcall is $subCall</p>";
+
+					}
+			else{
+				print "<p>Other call number. Please ask at the reference desk.</p>";
+				print "<img src='../img/FL2ref.gif' />";
+			
+
+			}
+    			print "</div>";
+	   		
+ 
+	}	
+	
+			 //end Floor 4 Shelves function
+
+//////////////////Floor 6 Shelves function/////////		
 function fl6StacksMap($callNum){
 		
 
@@ -84,8 +158,8 @@ function fl6StacksMap($callNum){
 		
 		// 0.001 - 006.5A - Shelf 1
 			 if ($subCall >= 'A' && $subCall < 'PQ'){
-						print "<img src='../img/FL4GHB.gif' />";
-						//print "<p> $callNum is not on floor 6</p>";
+						print "<img src='../img/FL6-2012-LM.gif' />";
+						print "<p> $callNum is on floor 6.</p>";
 		}
 
 			
@@ -126,10 +200,34 @@ function fl6StacksMap($callNum){
  
 	}	
 	
-			 //end BK function
+			 //end Floor 6 Shelves function
 		
 		
 		
+			 
+function fl6Spc($callNum){
+		
+
+		//	if ($location == 'BK') {
+					//if valid, cut to the first 6 chars and test
+					$location = "Floor 6";
+					//strip the tags to prevent executable code from being passed in
+					$callNum = strip_tags($callNum);
+					//strip the first 19 chars off the call number
+					//$callNum = substr_replace($callNum, '', 0, 19);
+					
+					//the way our catalog passes in call numbers leaves extra space characters
+					//before the call number begins. This gets rid of them. Each catalog may
+					//append different amounts of space to the numbers
+					$subCall = substr($callNum, 0, 20);	
+					print "<p><img src='../img/FL6-2012-SpecialCollection.gif' /></p>";
+					print "<p> $callNum is on floor 6 in Special Collections.</p>";
+		
+		
+	}	
+	
+			 //end Floor 6 Special Collections function
+
 		
 			//////////////////Storage basement function		/////////////////////////////
 			

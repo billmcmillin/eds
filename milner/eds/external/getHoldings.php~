@@ -24,7 +24,7 @@ for($xx=0; $xx<count($td_array); $xx++)
   $td_array[$xx] = preg_replace("/<td class=\"col2\">/", "", $td_array[$xx]);
   $td_array[$xx] = preg_replace("/</", "", $td_array[$xx]);
 
-  echo $td_array[$xx]."\n";
+  //echo $td_array[$xx]."\n";
 }
 
     getBooks($td_array);

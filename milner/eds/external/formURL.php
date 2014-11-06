@@ -1,5 +1,5 @@
 <?php
-
+  //include libraries for getting and parsing html elements
   include("../include/LIB_http.php");
   include("../include/LIB_parse.php");
   header('Content-Type: application/json');
@@ -7,8 +7,8 @@
     if ($_GET['idnum']):
         $id = ($_GET['idnum']);
     	
-    	$url = 'http://vufind.carli.illinois.edu/vf-isu/Record/AJAX?method=GetHoldings&id=isu_' . $id;
-    	
+    	  $url = 'http://vufind.carli.illinois.edu/vf-isu/Record/AJAX?method=GetHoldings&id=isu_' . $id;
+    	  //send base url + idnum to getPage function
         getPage($url);
 
     endif;  
@@ -30,7 +30,10 @@ function getPage($url){
   		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
   		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
   		  $td_array[$validLine] = $page_array[$x];
+<<<<<<< HEAD
   	  	//echo $td_array[$validLine].$validLine . "\n";
+=======
+>>>>>>> fbe41d95c93af90c39a9cb2a4a93b1991045ecda
    		  $validLine++;
   	}
   	//if the item is a call number, pull out the data 	
@@ -39,7 +42,10 @@ function getPage($url){
   		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
   		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
   		  $td_array[$validLine] = $page_array[$x];
+<<<<<<< HEAD
   	  	//echo $td_array[$validLine].$validLine . "\n";
+=======
+>>>>>>> fbe41d95c93af90c39a9cb2a4a93b1991045ecda
   		  $validLine++;
   	}
   	//if the item is a copy number pull number. Be careful to include all this so as not to include any notes that contain word copy.
@@ -49,7 +55,10 @@ function getPage($url){
   		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
   		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
   		  $td_array[$validLine] = $page_array[$x];
+<<<<<<< HEAD
   	  	//echo $td_array[$validLine].$validLine . "\n";
+=======
+>>>>>>> fbe41d95c93af90c39a9cb2a4a93b1991045ecda
   		  $validLine++;
   	}
   	
@@ -60,7 +69,10 @@ function getPage($url){
   		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
   		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
   		  $td_array[$validLine] = $page_array[$x];
+<<<<<<< HEAD
   	  //	echo $td_array[$validLine].$validLine . "\n";
+=======
+>>>>>>> fbe41d95c93af90c39a9cb2a4a93b1991045ecda
   	    $validLine++;
 
   	}
@@ -73,6 +85,7 @@ function getPage($url){
 function getBooks($td_array) {
         
     for($xx=0, $currentItem = 0; $xx<count($td_array); $xx += 4, $currentItem++)
+<<<<<<< HEAD
   {
   $totalLines = count($td_array);
 
@@ -105,4 +118,38 @@ function getBooks($td_array) {
 
 }
 
+=======
+        {
+        $totalLines = count($td_array); //how many elements?
+
+        $loc = $td_array[($xx + 0)];
+        $callnum = $td_array[($xx + 1)];
+        //$copynum = $td_array[($xx + 2)];
+        $itemavail = $td_array[($xx + 3)];
+        $numItems = ($totalLines /4);
+        $totalItems = array(); 
+        $itemArray = array(); 
+
+        //for each item (elements divided by 4)
+        	for($xy=0; $xy<$numItems; $xy++)
+        		{
+        			$itemNum = $xy + 1;
+              //assign the data to the totalItems array
+              $totalItems[$xy]['itemnum'] = $itemNum;
+              $totalItems[$xy]['loc'] = $loc;
+              $totalItems[$xy]['callnumber'] = $callnum;
+              $totalItems[$xy]['itemavail'] = $itemavail;
+
+             
+      	  	  }
+      	  	  //get the values of the array to prepare to pass
+              $json[] = array_values($totalItems);
+         
+      }
+      				//pass json objects to js
+              echo json_encode($json);
+
+}
+
+>>>>>>> fbe41d95c93af90c39a9cb2a4a93b1991045ecda
 ?>

@@ -48,19 +48,8 @@ function processResult(data){
     headhtml = '<div class="mapHeader">Find this Item</div>';
     $j(headhtml).appendTo("#output");
 
-<<<<<<< HEAD
     $j.each(data, function() {
       $j.each(this, function(name, value) {
-=======
-<<<<<<< HEAD
-    $j.each(data, function() {
-      $j.each(this, function(name, value) {
-=======
-    $j.each(data, function() { //for each object
-      $j.each(this, function(name, value) { //for each object inside the object of objects
->>>>>>> fbe41d95c93af90c39a9cb2a4a93b1991045ecda
->>>>>>> 9b0a428ca3a58162fb3511ebe150469a5b328fbd
-      			
        // console.log(value.loc + value.callnumber + value.itemnum + value.itemavail);
         content = '<div class="mapItem">';
         content = '<p><strong>Location: </strong>' + value.loc + '</p>';

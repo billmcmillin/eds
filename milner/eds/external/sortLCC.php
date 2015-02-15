@@ -29,9 +29,12 @@ sub get_class_sort_key {
 
 */
 
-		$callNum = 'Ps/3602.   O65745 c45 20?10';
+		//$callNum = 'Ps/3602.   O65745 c45 20?10';
 
 	function sortNums($callNum){
+
+		//$callNum = htmlspecialchars($_GET["callNum"]);
+ 
 		//concatenate class and item part
 
 		//remove leading and trailing whitespace
@@ -61,8 +64,8 @@ sub get_class_sort_key {
         $key = $init;
     
 		
-		echo $key;
+		return $key;
 	}
 		
-	sortNums($callNum);
+	//sortNums($callNum);
 ?>

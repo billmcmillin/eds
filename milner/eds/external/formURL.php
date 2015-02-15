@@ -30,14 +30,7 @@ function getPage($url){
   		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
   		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
   		  $td_array[$validLine] = $page_array[$x];
-<<<<<<< HEAD
   	  	//echo $td_array[$validLine].$validLine . "\n";
-=======
-<<<<<<< HEAD
-  	  	//echo $td_array[$validLine].$validLine . "\n";
-=======
->>>>>>> fbe41d95c93af90c39a9cb2a4a93b1991045ecda
->>>>>>> 9b0a428ca3a58162fb3511ebe150469a5b328fbd
    		  $validLine++;
   	}
   	//if the item is a call number, pull out the data 	
@@ -46,14 +39,7 @@ function getPage($url){
   		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
   		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
   		  $td_array[$validLine] = $page_array[$x];
-<<<<<<< HEAD
   	  	//echo $td_array[$validLine].$validLine . "\n";
-=======
-<<<<<<< HEAD
-  	  	//echo $td_array[$validLine].$validLine . "\n";
-=======
->>>>>>> fbe41d95c93af90c39a9cb2a4a93b1991045ecda
->>>>>>> 9b0a428ca3a58162fb3511ebe150469a5b328fbd
   		  $validLine++;
   	}
   	//if the item is a copy number pull number. Be careful to include all this so as not to include any notes that contain word copy.
@@ -63,14 +49,7 @@ function getPage($url){
   		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
   		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
   		  $td_array[$validLine] = $page_array[$x];
-<<<<<<< HEAD
   	  	//echo $td_array[$validLine].$validLine . "\n";
-=======
-<<<<<<< HEAD
-  	  	//echo $td_array[$validLine].$validLine . "\n";
-=======
->>>>>>> fbe41d95c93af90c39a9cb2a4a93b1991045ecda
->>>>>>> 9b0a428ca3a58162fb3511ebe150469a5b328fbd
   		  $validLine++;
   	}
   	
@@ -81,14 +60,7 @@ function getPage($url){
   		  $page_array[$x] = preg_replace("/.*<td class=\"col2\">/", "", $page_array[$x]);
   		  $page_array[$x] = preg_replace("/<.*/", "", $page_array[$x]);
   		  $td_array[$validLine] = $page_array[$x];
-<<<<<<< HEAD
   	  //	echo $td_array[$validLine].$validLine . "\n";
-=======
-<<<<<<< HEAD
-  	  //	echo $td_array[$validLine].$validLine . "\n";
-=======
->>>>>>> fbe41d95c93af90c39a9cb2a4a93b1991045ecda
->>>>>>> 9b0a428ca3a58162fb3511ebe150469a5b328fbd
   	    $validLine++;
 
   	}
@@ -101,11 +73,6 @@ function getPage($url){
 function getBooks($td_array) {
         
     for($xx=0, $currentItem = 0; $xx<count($td_array); $xx += 4, $currentItem++)
-<<<<<<< HEAD
-  {
-  $totalLines = count($td_array);
-=======
-<<<<<<< HEAD
   {
   $totalLines = count($td_array);
 
@@ -138,39 +105,4 @@ function getBooks($td_array) {
 
 }
 
-=======
-        {
-        $totalLines = count($td_array); //how many elements?
->>>>>>> 9b0a428ca3a58162fb3511ebe150469a5b328fbd
-
-  $loc = $td_array[($xx + 0)];
-  $callnum = $td_array[($xx + 1)];
-  //$copynum = $td_array[($xx + 2)];
-  $itemavail = $td_array[($xx + 3)];
-  $numItems = ($totalLines /4);
-  $totalItems = array();
-  $itemArray = array();
-
-  //echo $copynum . "<br />";
-  	for($xy=0; $xy<$numItems; $xy++)
-  		{
-  			$itemNum = $xy + 1;
-
-        $totalItems[$xy]['itemnum'] = $itemNum;
-        $totalItems[$xy]['loc'] = $loc;
-        $totalItems[$xy]['callnumber'] = $callnum;
-        $totalItems[$xy]['itemavail'] = $itemavail;
-
-       
-	  	  }
-	  	  //get the values of the array to prepare to pass
-        $json[] = array_values($totalItems);
-   
-}
-				//pass json objects to js
-        echo json_encode($json);
-
-}
-
->>>>>>> fbe41d95c93af90c39a9cb2a4a93b1991045ecda
 ?>

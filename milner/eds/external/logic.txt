@@ -1,0 +1,48 @@
+StaxNav Generator Program Logic
+
+Program to generate mapFuncs.php
+
+Spreadsheet of call number ranges has the following format:
+
+file: ranges.csv
+
+sep=\t	Library Name	Location Name	Call # Begin	Call # End	Image file
+!		LibraryName				
+!!						Floor  2 Circulation Desk			
+#										A				Z			floor2range1.gif
+
+
+mapFuncs.php should have:
+- an array of locations
+	-each location is an object that has:
+		-library name
+		-location name
+		-call number begin
+		-call number end
+		-image file
+
+display map function
+	for each object in array, if library, location and call number match, display map
+
+
+
+$locArray = array(
+    0 => array(
+    	'libName' => 'Milner'
+        'location' => 'Floor 1 Stacks',
+        'callNumBegin' => 'A'
+        'callNumEnd' => 'M'
+        'imageFile' => 'floor1range1.gif'
+
+    ),
+    1 => array(
+        'libName' => 'Milner'
+        'location' => 'Floor 1 Stacks',
+        'callNumBegin' => 'N'
+        'callNumEnd' => 'Z'
+        'imageFile' => 'floor1range2.gif'
+    ),
+);
+
+
+for each item in the array, if libName == libName && location == location && callNum > callNumBegin && callNum < callNumEnd, display image file, break
